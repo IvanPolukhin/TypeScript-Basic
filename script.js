@@ -1,7 +1,13 @@
-// Types in JS
+const button = document.querySelector('.button');
+const firstInput = document.querySelector('#first-input');
+const secondInput = document.querySelector('#second-input');
+const screen = document.querySelector('.screen');
 
-function response(a, b) {
-    return a + b
+function addNumbers(a, b) {
+    if (typeof a === 'number' && typeof b === 'number') {
+        screen.innerHTML = a + b;
+    } else screen.innerHTML = parseInt(a) + parseInt(b);
+
 }
-// only out in numbers!!!
-console.log(response('5', '6'));
+
+button.addEventListener('click', () => addNumbers(firstInput.value, secondInput.value));
