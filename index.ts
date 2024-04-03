@@ -1,7 +1,7 @@
-// Object Types
-// In this scrim, based on what we just learnt, can you change userName to firstName, then
-// add an age and lastName to the 'you' Object, making sure to account for it in the Specialised
-// Object for defining its structure.
+// Array Types
+// Can you add a stayedAt property to the you Object, that contains places you 
+// have stayed as strings, then add the correct key with assigned type to the 
+// existing Object Type?
 
 const returningUserDisplay = document.querySelector('#returning-user')
 const userNameDisplay = document.querySelector('#user')
@@ -43,14 +43,15 @@ const you: {
     lastName: string;
     isReturning: boolean;
     age: number;
+    stayedAt: string[];
 } = {
     firstName: 'Bobby',
     lastName: 'Brown',
     isReturning: true,
-    age: 35
+    age: 35,
+    stayedAt: ['florida-home', 'oman-flat', 'tokyo-bungalow']
 }
 
-console.log(you.userName)
 
 function populateUser(isReturning: boolean, userName: string) {
     if (isReturning) {
@@ -59,4 +60,5 @@ function populateUser(isReturning: boolean, userName: string) {
     userNameDisplay.innerHTML = userName
 }
 
-populateUser(you.isReturning, you.userName)
+populateUser(you.isReturning, you.firstName)
+
