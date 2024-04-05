@@ -1,0 +1,10 @@
+{
+    "ingore": [
+        "node_modules"
+    ],
+    "watch": [
+        "index.ts"
+    ],
+    "exec": "npm start",
+    "ext": "ts"
+}
