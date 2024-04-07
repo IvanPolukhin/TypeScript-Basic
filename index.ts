@@ -1,5 +1,4 @@
 // TYPES
-
 /*
  const sumArgs = (a: number, b: number): number => a + b;
 
@@ -68,7 +67,6 @@ const user: IUser = {
 */
 
 // ARRAYS
-
 /*
 const stringArray: (string)[] = ['a', 'b', 'c'];
 stringArray.push('d'); //error
@@ -78,7 +76,6 @@ const anyArray: any[] = [1, 'hi!', false];
 */
 
 // TUPLES
-
 /*
 const numericTuple = [1, 2] as const;
 numericTuple.push(3); //error
@@ -86,7 +83,7 @@ numericTuple.push(3); //error
 
 // FUNCTIONS
 /*
-// FUNCTIONS DECLARATION 
+// FUNCTIONS DECLARATION
 function printMsg(msg: string): void {
     console.log(msg);
 }
@@ -127,4 +124,56 @@ let sum: ISimFunc;
 sum = (a: number, b: number):number => a + b;
 
 sum = (a: string, b: number) => a + b;
+*/
+
+// NESTED ARRAY
+// const nestedArray: (number[] | string[])[] = [[1, 2, 3], ['a', 'b', 'c']];
+/*
+interface IUser {
+    userId: number;
+    name: string;
+    age: number;
+}
+
+interface IGetUserFunc {
+    (userId: number): IUser | null;
+}
+
+const getUser: IGetUserFunc = (userId) => {
+    const user: IUser = {
+        userId,
+        name: 'ivan',
+        age: 19
+    };
+    if (Math.random() > 0.5) {
+        return user;
+    }
+    return null;
+}
+
+console.log(getUser(1));
+console.log(getUser(2));
+*/
+
+// UNION TYPES
+/*
+// PRIMITIVE TYPES
+let value: string | number | boolean | { a: number };
+value = "hello";        // ОК
+value = 42;             // ОК
+value = true;           // ОК
+value = { a: 15 }       // OK
+value = { a: 'hello' }  // ERROR
+
+// IN FUNCION PARAMETERS
+const transformFunc = (value: number | string) => {
+    if (typeof value === 'string') {
+        return `String is ${value}`;
+    } else if (typeof value === 'number') {
+        return value * 2;
+    }
+}
+
+console.log(transformFunc('Hi'));
+console.log(transformFunc(3));
 */
