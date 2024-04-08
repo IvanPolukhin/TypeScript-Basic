@@ -116,14 +116,18 @@ printMsg('1stMsg', '2stMsg');
 
 // VIA INTERFACE
 interface ISimFunc {
-    (a: number, b: number):number;
+    (a: number, b: number): number;
 }
 
 let sum: ISimFunc;
 
-sum = (a: number, b: number):number => a + b;
+sum = (a: number, b: number): number => a + b;
 
-sum = (a: string, b: number) => a + b;
+sum = function (a: number, b: number): number {
+    return a + b;
+}
+
+console.log(sum(1, 2));
 */
 
 // NESTED ARRAY
@@ -176,4 +180,53 @@ const transformFunc = (value: number | string) => {
 
 console.log(transformFunc('Hi'));
 console.log(transformFunc(3));
+*/
+
+// TYPE ALIASES
+/*
+// SIMPLIEST CASE
+type NumberOrBoolean = number | boolean | { name: string; age: number };
+let myValue: NumberOrBoolean;
+const user: NumberOrBoolean = {
+    name: 'anton',
+    age: 16
+};
+myValue = 300;   // OK
+myValue = true;  // OK
+myValue = 'hi';  // ERROR
+
+type NumberOrBoolean = number | boolean | { name: string } | { age: number };
+let myValue: NumberOrBoolean;
+const user: NumberOrBoolean = {
+    name: 'anton',
+    age: 16
+};
+// TYPES INTERSECTION
+type a = {
+    propA: string;
+}
+
+type b = {
+    propB: number
+}
+
+type c = a & b;
+
+const myObj: c = {
+    propA: 'hi',
+    propB: 42
+};
+// LITERAL TYPES
+type OnOff = 1 | 0;
+
+const checkDeviceState = (signal: OnOff) => {
+    if (signal === 1) {
+        return 'Divice enabled';
+    } else if (signal === 0) {
+        return 'Divice disabled'
+    }
+}
+
+console.log(checkDeviceState(1));
+console.log(checkDeviceState(0));
 */
