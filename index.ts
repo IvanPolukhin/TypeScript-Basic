@@ -233,7 +233,7 @@ console.log(checkDeviceState(0));
 
 // ENUMS
 /*
-// SIMPLIEST CASE 
+// SIMPLIEST CASE
 enum DiviceStates {
     enabled, // 0
     disabled, // 1
@@ -247,8 +247,8 @@ console.log(disabled);
 console.log(broken);
 // START FROM DIFFERENT NUMBER
 enum DiviceStates {
-    enabled = 4, // 4 
-    disabled, // 5 
+    enabled = 4, // 4
+    disabled, // 5
     broken // 6
 }
 // HETEROGENIC ENUMS
@@ -266,8 +266,6 @@ enum FileAccess {
     // computed member
     G = '123'.length,
 }
-
-*/
 // NESTED ENUMS
 enum MyEnum1 {
     One,
@@ -278,3 +276,125 @@ enum MyEnum2 {
     First = MyEnum1.One,
     Second = MyEnum1.Two
 }
+*/
+
+// INTERFACE
+/*
+// BASIC INTERFACE
+interface IUser {
+    login: string;
+    password: string;
+}
+
+const user: IUser = {
+    login: 'LOGIN',
+    password: '12345'
+}
+// INTERFACE INHERITANCE & NESTING
+interface IUser {
+    login: string;
+    password: string;
+}
+
+interface IAdminRights {
+    editArticles: boolean;
+    deleteArticles: boolean;
+    banUsers: boolean;
+}
+
+interface ISecret {
+    secret: string;
+}
+
+interface IAdmin extends IUser, ISecret {
+    permissions: IAdminRights
+}
+
+const admin: IAdmin = {
+    login: 'login',
+    password: '12345',
+    permissions: {
+        editArticles: true,
+        deleteArticles: true,
+        banUsers: false
+    },
+    secret: 'zxc'
+}
+// EXTEND MULTIPLE INTERFACES
+interface IAged {
+    age: number;
+}
+
+interface INamed {
+    name: string;
+}
+
+interface IPerson extends IAged, INamed { }
+
+const person: IPerson = {
+    age: 11,
+    name: 'ivan'
+}
+// INTERFFACE IN TYPES INTERSCTION
+interface IAged {
+    age: number;
+}
+
+interface INamed {
+    name: string;
+}
+
+type IPerson = IAged & INamed;
+
+const person: IPerson = {
+    name: 'ivan',
+    age: 19
+}
+// READONLY PROPERTIES
+interface IUser {
+    name: string;
+    readonly secret: string;
+}
+
+const user: IUser = {
+    name: 'ivan',
+    secret: 'CANNOT BE CHANGED'
+};
+
+user.name = 'Definittely not ivan'; // OK
+user.secret = 'SUCCESSFULLY CHANGED'; // ERROR
+// OPTIONaLY PROPERTIES
+interface IUser {
+    name: string;
+    age?: number
+}
+
+const userWithAge: IUser = {
+    name: 'ivan',
+    age: 22
+};
+
+const userWithOutAge: IUser = {
+    name: 'ivan2',
+}
+// INDEX SIGNATURES(ARRAY)
+interface INumericArray {
+    [index: number]: number;
+}
+
+interface IStringArray {
+    [index: number]: string;
+}
+
+const numArray: INumericArray = [1, 2, 3, 4, 5]; // OK
+const strArray: IStringArray = ['a', 'b', 'c']; // OK
+// INDEX SIGNATURES (OBJECT)
+interface IDictionary {
+    [index: string]: string;
+}
+
+const myDictionary: IDictionary = {
+    number: 'число',
+    table: 'стол'
+};
+*/
