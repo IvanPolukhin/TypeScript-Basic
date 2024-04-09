@@ -230,3 +230,51 @@ const checkDeviceState = (signal: OnOff) => {
 console.log(checkDeviceState(1));
 console.log(checkDeviceState(0));
 */
+
+// ENUMS
+/*
+// SIMPLIEST CASE 
+enum DiviceStates {
+    enabled, // 0
+    disabled, // 1
+    broken // 2
+}
+
+const { enabled, disabled, broken } = DiviceStates
+
+console.log(enabled);
+console.log(disabled);
+console.log(broken);
+// START FROM DIFFERENT NUMBER
+enum DiviceStates {
+    enabled = 4, // 4 
+    disabled, // 5 
+    broken // 6
+}
+// HETEROGENIC ENUMS
+enum heterogenicEnum {
+    a = 'alala',
+    b = 2
+}
+// CONSTANT & COMPUTED MEMBERS
+enum FileAccess {
+    // constant numbers
+    None,
+    Read = 1 << 1,
+    Write = 1 << 2,
+    ReadWrite = Read | Write,
+    // computed member
+    G = '123'.length,
+}
+
+*/
+// NESTED ENUMS
+enum MyEnum1 {
+    One,
+    Two
+}
+
+enum MyEnum2 {
+    First = MyEnum1.One,
+    Second = MyEnum1.Two
+}
