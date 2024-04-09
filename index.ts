@@ -398,3 +398,34 @@ const myDictionary: IDictionary = {
     table: 'стол'
 };
 */
+
+// interface method
+/*
+interface IGreeter {
+    msg: string;
+    sayHi: () => void;
+}
+
+const greeter: IGreeter = {
+    msg: 'Hi!!!',
+    sayHi() {
+        console.log(this.msg);
+    }
+};
+
+greeter.sayHi();
+
+// Type Assertion
+
+// Angle Brackets Syntax
+const myDiv = <HTMLElement>document.getElementById('div');
+
+// "AS" Synatax
+const myDiv = document.getElementById('div') as HTMLElement;
+
+
+*/
+
+
+// Non-Null Assertion Syntax
+const myDiv = document.getElementById('div')!;
