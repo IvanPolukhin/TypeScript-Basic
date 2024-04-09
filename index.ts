@@ -423,9 +423,136 @@ const myDiv = <HTMLElement>document.getElementById('div');
 // "AS" Synatax
 const myDiv = document.getElementById('div') as HTMLElement;
 
-
-*/
-
-
 // Non-Null Assertion Syntax
 const myDiv = document.getElementById('div')!;
+*/
+
+// Classes
+/*
+// Simpliest Syntax
+class Person {
+    name: string;
+    age: number;
+}
+
+const person = new Person; // Ok
+person.name = 'Ivan';
+person.age = 32;
+
+const person2 = new Person('John', 11) // Error
+
+// Simpliest Syntax (With Constructor)
+class Person {
+    name: string;
+    age: number | null;
+
+    constructor(name = 'Anonymous', age = null) {
+        this.name = name;
+        this.age = age;
+    }
+}
+
+const person = new Person(); // { name: 'Anonymous', age: null }
+const person2 = new Person('John', 12); // { name:'John' age: 11 }
+
+// Add Method
+class Person {
+    name: string;
+    age: number;
+
+    constructor(name = 'anonymous', age = 30) {
+        this.name = name;
+        this.age = age;
+    }
+
+    sayHi(): void {
+        console.log(`hi! My name is ${name}`);
+    }
+}
+
+const person = new Person();
+const person2 = new Person('ivan', 19);
+
+person.sayHi();
+person2.sayHi();
+
+// Classe & Interfaces
+interface IPerson {
+    name: string;
+    age: number;
+    sayHi: () => void;
+}
+
+class Person implements IPerson {
+    name: string;
+    age: number;
+
+    constructor(name = 'anonymous', age = 30) {
+        this.name = name;
+        this.age = age;
+    }
+
+    sayHi(): void {
+        console.log(`Hi! My name is ${this.name}`);
+
+    }
+}
+
+// Arrow Func AS Methods
+interface IPerson {
+    name: string;
+    age: number;
+}
+
+class Person implements IPerson {
+    name: string;
+    age: number;
+
+    constructor(name = 'anonymous', age = 30) {
+        this.name = name;
+        this.age = age;
+    }
+
+    sayHi = () => {
+        console.log(`Hi! My name is ${this.name}`);
+    }
+}
+'
+// Abstract Classes
+abstract class AbstractGreeter {
+    abstract sayHi(): void;
+}
+
+// Okay
+class MyGreeter extends AbstractGreeter {
+    sayHi(): void {
+        console.log('hi!');
+    }
+}
+
+// Not Okay
+class MyGreeter1 extends AbstractGreeter {
+    sayHi(msg): void {
+        console.log('hi!' + msg);
+    }
+}
+
+// Class Members Visibility
+class MyGreeter {
+    public sayHi(): void {
+        console.log('hi!');
+    }
+}
+
+class MyGreeter {
+    protected sayHi(): void {
+        console.log('hi!');
+    }
+}
+
+class MyGreeter {
+    private sayHi(): void {
+        console.log('hi!');
+    }
+}
+*/
