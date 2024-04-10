@@ -556,3 +556,52 @@ class MyGreeter {
     }
 }
 */
+
+// Generic
+/*
+// Identity Function
+function identity(value) {
+    return value;
+}
+
+// Generic Identity Func
+function identity<T>(value: T):T {
+    return value;
+}
+
+// Generic Interface
+interface MyStorage<T> {
+    values: T[];
+    getValues: () => T[];
+}
+
+const numericStorage: MyStorage<number> = {
+    values: [],
+    getValues() {
+        return this.values;
+    },
+};
+
+const booleanStorage: MyStorage<boolean> = {
+    values: [],
+    getValues() {
+        return this.values;
+    },
+};
+
+// Generic Class
+class IdentityClass<T> {
+    value: T;
+
+    constructor(value: T) {
+        this.value = value;
+    }
+
+    getIdentyti(): T {
+        return this.value;
+    }
+}
+
+const numericIdentyti: IdentityClass<number> = new IdentityClass(1);
+const strIdentyti: IdentityClass<string> = new IdentityClass('zxc');
+*/
