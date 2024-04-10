@@ -605,3 +605,235 @@ class IdentityClass<T> {
 const numericIdentyti: IdentityClass<number> = new IdentityClass(1);
 const strIdentyti: IdentityClass<string> = new IdentityClass('zxc');
 */
+
+// Type Manipulations
+/*
+// KeyOf Operator
+type Rectangle = {
+    width: number;
+    height: number;
+};
+
+const myRectangle: Rectangle = {
+    width: 10,
+    height: 20
+};
+
+const getValueFromRectProp = (prop: keyof Rectangle, rect: Rectangle) => rect[prop];
+
+// TypeOf Operator
+function abc() {
+    return {
+        x: 10,
+        y: 'zxc'
+    }
+}
+
+type ABCType = ReturnType<typeof abc>;
+
+const abc2: typeof abc = () => {
+    return {
+        x: 1013213,
+        y: 'qwerty'
+    }
+}
+
+// Indexed Access Types
+type Person = {
+    age: number;
+    name: string;
+    isAdmin: boolean;
+};
+
+type Age = Person['age'];
+
+// Conditional Types
+interface IAnimal {
+    live(): void;
+}
+
+interface Dog extends IAnimal {
+    woof(): void;
+}
+
+interface Rectangle {
+    width: number;
+    height: string;
+}
+
+type Type = Dog extends IAnimal ? number : string;
+type Type1 = Rectangle extends IAnimal ? number : string;
+
+// Mapped Types
+type StrNum = {
+    [key: string]: string | number;
+};
+
+const ogj: StrNum = {
+    laallala: 'adasdadada',
+    test: 1312131,
+    isAdmin: true
+};
+
+// Template Literal Types
+type EmailLocaleDs = "welcome_email" | "email_heading";
+type FooterLocaleDs = "footer_title" | "footer_sendoff";
+
+type AllLocaleDs = `${EmailLocaleDs | FooterLocaleDs}_id`;
+
+// Template Literal Types example #2
+type Direction = 'up' | 'down' | 'left' | 'right';
+
+type DirectionObj = {
+    [key in Direction]: boolean;
+};
+
+const diretionUsed: DirectionObj = {
+    left: true,
+    down: false,
+    right: true,
+    up: true
+}
+*/
+
+// Utility Types
+/*
+// Partial <TYPE>
+interface IRectangle {
+    width: number;
+    height: number;
+}
+
+const partOfRectangle: Partial<IRectangle> = {
+    width: 3,
+};
+
+// Required <TYPE>
+interface IPoint {
+    a?: number;
+    b?: number;
+}
+
+const fullPoint: Required<IPoint> = {
+    a: 1,
+    b: 2
+};
+
+// Readonly <TYPE>
+interface IPoint {
+    a: number;
+    b: number;
+}
+
+const frozenPoint: Readonly<IPoint> = {
+    a: 1,
+    b: 2
+};
+
+frozenPoint.a = 2;   // Error
+
+// Record <KEYS, TYPE>
+interface IPointData {
+    a: number;
+    b: number;
+}
+
+type PointNames = 'firstPoint' | 'secondPoint';
+
+const point1: {
+    [key in PointNames]: IPointData
+} = {
+    firstPoint: {
+        a: 1,
+        b: 1
+    },
+    secondPoint: {
+        a: 2,
+        b: 2
+    }
+}
+
+const point: Record<PointNames, IPointData> = {
+    firstPoint: {
+        a: 1,
+        b: 1
+    },
+    secondPoint: {
+        a: 2,
+        b: 2
+    }
+};
+
+// Pick <TYPE, KEYS>
+interface ToDo {
+    title: string;
+    description: string;
+    completed: boolean;
+}
+
+type ToDoPreview = Pick<ToDo, 'title' | 'completed'>;
+
+const toDo: ToDoPreview = {
+    title: 'up',
+    completed: true
+}
+
+// Omit <TYPE, Keys>
+interface IPoint {
+    a: number;
+    b: number;
+    willBeRemoved: string;
+}
+
+type Point = Omit<IPoint, 'willBeRemoved'>;
+
+const point: Point = {
+    a: 15,
+    b: 1
+    willBeRemoved: 'zxc' // Error
+};
+
+// Exclude <TYPE, EXCLUDEDUNION>
+type Direction = 'up' | 'down' | 'left' | 'rigth'
+
+type DirectionsWithoutLateral = Exclude<Direction, 'rigth' | 'left'>;
+
+const direction: DirectionsWithoutLateral = 'up'; // OK
+const direction1: DirectionsWithoutLateral = 'rigth'; // Error
+
+// Extaract <TYPE, UNION>
+type Direction = 'up' | 'down' | 'left' | 'rigth'
+
+type DirectionsWithoutLateral = Extract<Direction, 'rigth' | 'left'>;
+
+const direction: DirectionsWithoutLateral = 'up'; // Error
+const direction1: DirectionsWithoutLateral = 'rigth'; // OK 
+
+// NonNullLable <TYPE>
+type SomeType = string | null | undefined;
+
+type WithoutNullable = NonNullable<SomeType>
+
+// Parameters <TYPE>
+const sum = (a: number, b: number): number => a + b;
+
+type SumParameters = Parameters<typeof sum>
+
+// ConstructorParameters <TYPE>
+type ErrorConstructorParameters = ConstructorParameters<ErrorConstructor>;
+
+const mtError = new Error('asdasd');
+
+// ReturnTypes <TYPE>
+const transformToObj = (a: number, b: number): { a: number, b: number } => ({a,b});
+
+type Transformed = ReturnType<typeof transformToObj>;
+
+// InstanceType <TYPE>
+class MyClass {
+    a: number;
+    b: number;
+}
+
+type MyClassAgain = InstanceType<typeof MyClass>
+*/
